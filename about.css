@@ -261,7 +261,7 @@
   }
   .contact .php-email-form .sent-message {
     display: none;
-    background: rgba(255, 255, 255, 0.08);
+    background: rgba(0, 0, 255, 0.08);
     background: #18d26e;
     text-align: center;
     padding: 15px;
@@ -290,23 +290,23 @@
     border-radius: 0;
     box-shadow: none;
     font-size: 14px;
-    background: rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.8);
     border: 0;
     transition: 0.3s;
     color: rgb(10, 10, 10);
   }
   .contact .php-email-form input:focus,
   .contact .php-email-form textarea:focus {
-    background-color: rgba(255, 255, 255, 0.11);
+    background-color: rgba(248, 213, 202, 0.8);
   }
   .contact .php-email-form input::-moz-placeholder,
   .contact .php-email-form textarea::-moz-placeholder {
-    color: rgba(255, 255, 255, 0.3);
+    color: rgba(80, 78, 78, 0.8);
     opacity: 1;
   }
   .contact .php-email-form input::placeholder,
   .contact .php-email-form textarea::placeholder {
-    color: rgba(255, 255, 255, 0.3);
+    color: rgba(80, 78, 78, 0.8);
     opacity: 1;
   }
   .contact .php-email-form input {
