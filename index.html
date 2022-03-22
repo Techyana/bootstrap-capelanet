@@ -536,28 +536,65 @@
       </div>
     </div>
 
-    <form action="forms/contact.php" method="post" role="form" class="php-email-form mt-4">
+    <form id="form" role="form" class="php-email-form mt-4">
       <div class="row">
         <div class="col-md-6 form-group">
-          <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
+          <input type="text" name="from_name" class="form-control" id="from_name" placeholder="Your Name" required>
         </div>
         <div class="col-md-6 form-group mt-3 mt-md-0">
-          <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
+          <input type="email" class="form-control" name="reply_to" id="reply_to" placeholder="Your Email" required>
         </div>
       </div>
       <div class="form-group mt-3">
         <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
       </div>
       <div class="form-group mt-3">
-        <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
+        <textarea class="form-control" name="message" id="message" rows="5" placeholder="Message" required></textarea>
       </div>
       <div class="my-3">
         <div class="loading">Loading</div>
         <div class="error-message"></div>
         <div class="sent-message">Your message has been sent. Thank you!</div>
       </div>
-      <div class="text-center"><button type="submit">Send Message</button></div>
+      <div class="text-center"><button id="button" value="Send Email" type="submit">Send Message</button></div>
     </form>
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+          
+    <script type="text/javascript">
+      emailjs.init('1XuDqz4m2kBQuGvoK')
+    
+    </script>
+
+<script>
+const btn = document.getElementById('button');
+
+document.getElementById('form')
+.addEventListener('submit', function(event) {
+event.preventDefault();
+
+btn.value = 'Sending...';
+
+const serviceID = 'default_service';
+const templateID = 'template_fdgwc6v';
+
+emailjs.sendForm(serviceID, templateID, this)
+.then(() => {
+btn.value = 'Send Email';
+alert('Sent!');
+}, (err) => {
+btn.value = 'Send Email';
+alert(JSON.stringify(err));
+});
+
+const inputs = document.querySelectorAll('#from_name, #reply_to, #message, #subject');
+
+inputs.forEach(input => {
+input.value = '';
+});
+});
+</script>
+
 
   </div>
 
@@ -598,7 +635,7 @@
  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
  <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
- <script src="assets/vendor/php-email-form/validate.js"></script>
+ <!--<script src="assets/vendor/php-email-form/validate.js"></script>-->
 
  <!-- Template Main JS File -->
  <script src="assets/js/main.js"></script>
